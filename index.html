@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MarkerMap by ushckff</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="top-bar">
+      <div class="logo">MarkerMap by ushckff</div>
+      <nav class="nav-buttons">
+        <div class="filter-container">
+          <button id="filter-btn" class="header-btn fixed-btn">
+            <img id="filter-image" src="/images/search.svg" alt="Поиск" />
+            <span id="filter-text">Поиск по тегу</span>
+          </button>
+
+          <div id="filter-dropdown" class="dropdown hidden">
+            <button class="dropdown-item" data-value="all">Все</button>
+            <button class="dropdown-item" data-value="architecture">Архитектура</button>
+            <button class="dropdown-item" data-value="bar">Бары</button>
+            <button class="dropdown-item" data-value="winery">Винодельни</button>
+            <button class="dropdown-item" data-value="history">Исторические места</button>
+            <button class="dropdown-item" data-value="cafe">Кофейня</button>
+            <button class="dropdown-item" data-value="club">Клубы</button>
+            <button class="dropdown-item" data-value="picnic">Место для пикника</button>
+            <button class="dropdown-item" data-value="cuisine">Местная кухня</button>
+            <button class="dropdown-item" data-value="museum">Музеи</button>
+            <button class="dropdown-item" data-value="park">Парки</button>
+            <button class="dropdown-item" data-value="beach">Пляжи</button>
+            <button class="dropdown-item" data-value="restaurant">Рестораны</button>
+            <button class="dropdown-item" data-value="theater">Театры</button>
+            <button class="dropdown-item" data-value="photo">Фотозона</button>
+          </div>
+        </div>
+
+        <!-- Профиль -->
+        <div class="profile-container">
+          <button id="profile-btn" class="header-btn fixed-btn">
+            <img id="profile-logo" src="/images/profile.png" alt="Профиль" />
+            <span>Профиль</span>
+          </button>
+          <div id="profile-dropdown" class="dropdown hidden">
+            <button id="login-btn" class="dropdown-item">Войти</button>
+            <button id="register-btn" class="dropdown-item">Зарегистрироваться</button>
+            <button id="share-map-btn" class="dropdown-item">Поделиться картой</button>
+          </div>
+        </div>
+
+      </nav>
+    </header>
+
+
+    <!-- Модальное окно профиля -->
+    <div id="profile-modal" class="modal hidden">
+      <div class="modal-content profile-content">
+        <button id="close-profile-btn" class="close-modal-btn">×</button>
+        <button id="login-btn-modal" class="dropdown-item">Войти</button>
+        <button id="register-btn-modal" class="dropdown-item">Зарегистрироваться</button>
+        <button id="share-map-btn-modal" class="dropdown-item">Поделиться картой</button>
+      </div>
+    </div>
+
+    <!-- Модальное окно для просмотра метки -->
+    <div id="info-modal" class="modal hidden">
+      <div class="modal-content">
+        <button id="close-modal-btn" class="close-modal-btn">×</button>
+        <h2 id="modal-title"></h2>
+        <p id="modal-address" class="modal-address"></p>
+        <p id="modal-description"></p>
+        <p id="modal-rating" class="modal-rating"></p>
+        <img id="modal-photo" alt="Photo" class="hidden" />
+        <div class="modal-actions">
+          <button id="edit-marker-btn" class="modal-btn modal-btn-edit">Изменить</button>
+          <button id="delete-marker-btn" class="modal-btn modal-btn-delete">Удалить</button>
+        </div>
+      </div>
+    </div>
+
+
+    <main>
+      <div id="map"></div>
+
+      <div id="floating-flag" class="floating-flag hidden">
+        <img id="flag-icon" src="/images/flag.png" alt="Flag" />
+      </div>
+
+      <aside id="sidebar" class="sidebar hidden">
+        <h2>Добавить место</h2>
+
+        <label for="place-name">Название</label>
+        <textarea
+          id="place-name"
+          rows="1"
+          placeholder="Введите название"
+        ></textarea>
+
+        <label for="place-description">Описание</label>
+        <textarea
+          id="place-description"
+          rows="2"
+          placeholder="Краткое описание"
+        ></textarea>
+
+        <label>Оценить место</label>
+        <div id="rating-container">
+          <span class="star" data-value="1">☆</span>
+          <span class="star" data-value="2">☆</span>
+          <span class="star" data-value="3">☆</span>
+          <span class="star" data-value="4">☆</span>
+          <span class="star" data-value="5">☆</span>
+        </div>
+
+        <label id="tag-text" for="place-tag">Тег</label>
+        <select id="place-tag">
+          <option id="tag-none" value="" disabled selected>Выбрать тег</option>
+          <option value="architecture">Архитектура</option>
+          <option value="bar">Бары</option>
+          <option value="winery">Винодельни</option>
+          <option value="history">Исторические места</option>
+          <option value="cafe">Кофейня</option>
+          <option value="club">Клубы</option>
+          <option value="picnic">Место для пикника</option>
+          <option value="cuisine">Местная кухня</option>
+          <option value="museum">Музеи</option>
+          <option value="park">Парки</option>
+          <option value="beach">Пляжи</option>
+          <option value="restaurant">Рестораны</option>
+          <option value="theater">Театры</option>
+          <option value="photo">Фотозона</option>
+          <option value="other">Другое</option>
+        </select>
+
+        <div class="file-upload">
+          <label for="place-photo" id="upload-label">Добавить фото</label>
+          <input type="file" id="place-photo" accept="image/*" />
+        </div>
+
+        <div class="sidebar-buttons">
+          <button id="pick-on-map-btn">Указать на карте</button>
+          <button id="cancel-place-btn">Отмена</button>
+        </div>
+      </aside>
+    </main>
+
+    <button id="add-place-btn" class="add-place-btn">Добавить место</button>
+    
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=4213f0d0-4c3e-472c-bca6-8f1530505928&lang=ru_RU&load=package.full"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
