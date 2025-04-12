@@ -1,6 +1,8 @@
-+==========================+
-| version 1.0.0 (12.04.25) |
-+==========================+
+https://ushckff.github.io/MarketMap/
+
+-----------------------------------------
+
+version 1.0.0 (12.04.25)
 
 Realized:
 - MVP
@@ -12,6 +14,3 @@ Near updates:
 - language switch
 - new site design
 
----------------------------------------
-
-https://ushckff.github.io/MarketMap/
