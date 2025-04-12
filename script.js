@@ -30,6 +30,8 @@ function createMap(centerCoords) {
     controls: ['zoomControl']
   });
 
+  map.controls.remove('zoomControl');
+
   map.events.add('click', (e) => {
     if (floatingFlagActive) {
       const coords = e.get('coords');
