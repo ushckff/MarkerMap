@@ -54,7 +54,9 @@ function addPlaceWithData(coords) {
   const addMarker = () => {
     addPlacemark(coords, name, description, tag, photoData, currentRating);
     isPlacingMarker = false;
-    toggleSidebar();
+    document.getElementById('sidebar').classList.add('hidden');
+    document.getElementById('sidebar').classList.remove('slide-down');
+    isSidebarOpen = false;
     clearForm();
   };
 
@@ -171,6 +173,7 @@ function showMarkerModal(placeObj) {
   document.getElementById('delete-marker-btn').onclick = function () {
     map.geoObjects.remove(placeObj.placemark);
     placemarks = placemarks.filter(obj => obj !== placeObj);
+    savePlacemarksToStorage();
     modal.classList.add('hidden');
   };
 
@@ -316,6 +319,10 @@ document.addEventListener('DOMContentLoaded', () => {
       floatingFlagActive = true;
       showFloatingFlag();
       document.getElementById('map').classList.add('flag-cursor');
+
+      if (window.innerWidth <= 768) {
+        document.getElementById('sidebar').classList.add('slide-down');
+      }
     }
   });
   
@@ -413,6 +420,10 @@ document.addEventListener('DOMContentLoaded', () => {
   
   document.getElementById('share-map-btn-modal').addEventListener('click', () => {
     alert('🔧 Будет реализовано в ближайшем будущем');
+  });
+
+  document.getElementById('return-arrow').addEventListener('click', () => {
+    document.getElementById('sidebar').classList.remove('slide-down');
   });
 });
 

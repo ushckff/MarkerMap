@@ -80,6 +80,10 @@ html, body {
   margin-left: 5px;
 }
 
+#filter-btn {
+  margin-left: 10px;
+}
+
 .profile-container {
   margin-right: 50px;
   margin-left: 10px;
@@ -94,7 +98,7 @@ html, body {
 .dropdown {
   position: absolute;
   top: 100%;
-  left: 0;
+  right: 0;
   background: #64b5f6;
   border-radius: 4px;
   overflow: hidden;
@@ -227,20 +231,24 @@ main {
 }
 
 .file-upload {
-  margin-bottom: 12px;
+  margin-bottom: 20px;
 }
 #place-photo {
   display: none;
 }
 #upload-label {
-  display: inline-block;
-  padding: 10px 16px;
+  display: block;
+  width: 95%;
+  padding: 12px 16px;
+  text-align: center;
   border-radius: 20px;
   background-color: #64b5f6;
   color: #fff;
   cursor: pointer;
   box-shadow: 0 1px 4px rgba(0,0,0,0.2);
   transition: background-color 0.2s;
+  font-weight: bold;
+  font-size: 1rem;
 }
 #upload-label:hover {
   background-color: #42a5f5;
@@ -248,19 +256,28 @@ main {
 
 .sidebar-buttons {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  gap: 4%;
   margin-top: 10px;
 }
+
+.sidebar-buttons .half-button {
+  width: 48%;
+}
+
 .sidebar-buttons button {
-  margin-left: 10px;
-  padding: 10px 16px;
+  width: 100%;
+  padding: 12px 0;
+  font-size: 1rem;
+  font-weight: bold;
   border: none;
-  cursor: pointer;
   border-radius: 20px;
   color: #fff;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   transition: background-color 0.2s;
 }
+
 #pick-on-map-btn {
   background-color: #66bb6a;
 }
@@ -409,5 +426,90 @@ main {
   color: #ffa000;
 }
 
+@media (max-width: 600px) {
+  #filter-text,
+  #profile-btn span {
+    display: none;
+  }
 
+  .fixed-btn {
+    min-width: auto;
+    padding: 8px;
+  }
 
+  .profile-container {
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100vw;
+    height: 100vh;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    position: fixed;
+    z-index: 10000;
+    transform: translateX(0);
+    transition: transform 0.3s ease;
+    box-sizing: border-box;
+  }
+
+  .sidebar.hidden {
+    transform: translateX(100%);
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar.slide-down {
+    transform: translateY(96%);
+    transition: transform 0.4s ease;
+  }
+
+  .sidebar-return-arrow {
+    display: none;
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10001;
+    width: 40px;
+    height: 40px;
+    background-image: url('images/arrow.png'); /* путь к PNG */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+  }
+
+  .sidebar.slide-down .sidebar-return-arrow {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  #upload-label {
+    width: 90%;
+  }
+}
+
+@media (max-width: 600px) {
+  .sidebar-buttons {
+    gap: 6%;
+  }
+
+  .sidebar-buttons button {
+    flex: 1;
+    max-width: none;
+  }
+}
+
+@media (max-width: 600px) {
+  #place-tag {
+    font-size: 0.75rem;
+    padding: 4px 6px;
+    height: 30px;
+  }
+}
