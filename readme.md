@@ -2,7 +2,7 @@ https://ushckff.github.io/MarketMap/
 
 -----------------------------------------
 
-version 1.0.0 (12.04.25)
+version 1.0.1 (12.04.25)
 
 Realized:
 - MVP

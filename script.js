@@ -49,7 +49,7 @@ function addPlaceWithData(coords) {
   const tag = document.getElementById('place-tag').value;
   const photoInput = document.getElementById('place-photo');
   
-  let photoData = '/images/place.png';
+  let photoData = 'images/place.png';
 
   const addMarker = () => {
     addPlacemark(coords, name, description, tag, photoData, currentRating);

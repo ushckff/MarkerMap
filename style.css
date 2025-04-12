@@ -365,7 +365,7 @@ main {
   padding: 10px 20px;
   font-size: 1rem;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 20px;
   color: #fff;
   transition: background-color 0.2s;
 }
@@ -464,7 +464,7 @@ main {
 
 @media (max-width: 768px) {
   .sidebar.slide-down {
-    transform: translateY(96%);
+    transform: translateY(80%);
     transition: transform 0.4s ease;
   }
 
