@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>MarkerMap by ushckff</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="top-bar">
@@ -47,10 +47,8 @@
             <button id="share-map-btn" class="dropdown-item">Поделиться картой</button>
           </div>
         </div>
-
       </nav>
     </header>
-
 
     <!-- Модальное окно профиля -->
     <div id="profile-modal" class="modal hidden">
@@ -78,6 +76,9 @@
       </div>
     </div>
 
+    <div id="map-instruction" class="map-instruction hidden">
+      Укажите место на карте
+    </div>
 
     <main>
       <div id="map"></div>
@@ -90,18 +91,10 @@
         <h2>Добавить место</h2>
 
         <label for="place-name">Название</label>
-        <textarea
-          id="place-name"
-          rows="1"
-          placeholder="Введите название"
-        ></textarea>
+        <textarea id="place-name" rows="1" placeholder="Введите название"></textarea>
 
         <label for="place-description">Описание</label>
-        <textarea
-          id="place-description"
-          rows="2"
-          placeholder="Краткое описание"
-        ></textarea>
+        <textarea id="place-description" rows="2" placeholder="Краткое описание"></textarea>
 
         <label>Оценить место</label>
         <div id="rating-container">
@@ -112,25 +105,28 @@
           <span class="star" data-value="5">☆</span>
         </div>
 
-        <label id="tag-text" for="place-tag">Тег</label>
-        <select id="place-tag">
-          <option id="tag-none" value="" disabled selected>Выбрать тег</option>
-          <option value="architecture">Архитектура</option>
-          <option value="bar">Бары</option>
-          <option value="winery">Винодельни</option>
-          <option value="history">Исторические места</option>
-          <option value="cafe">Кофейня</option>
-          <option value="club">Клубы</option>
-          <option value="picnic">Место для пикника</option>
-          <option value="cuisine">Местная кухня</option>
-          <option value="museum">Музеи</option>
-          <option value="park">Парки</option>
-          <option value="beach">Пляжи</option>
-          <option value="restaurant">Рестораны</option>
-          <option value="theater">Театры</option>
-          <option value="photo">Фотозона</option>
-          <option value="other">Другое</option>
-        </select>
+        <label id="tag-text">Тег</label>
+        <div class="custom-select" id="place-tag-wrapper">
+          <div class="cs-selected" id="place-tag-selected">Выбрать тег</div>
+          <ul class="cs-options hidden" id="place-tag-options">
+            <li data-value="architecture">Архитектура</li>
+            <li data-value="bar">Бары</li>
+            <li data-value="winery">Винодельни</li>
+            <li data-value="history">Исторические места</li>
+            <li data-value="cafe">Кофейня</li>
+            <li data-value="club">Клубы</li>
+            <li data-value="picnic">Место для пикника</li>
+            <li data-value="cuisine">Местная кухня</li>
+            <li data-value="museum">Музеи</li>
+            <li data-value="park">Парки</li>
+            <li data-value="beach">Пляжи</li>
+            <li data-value="restaurant">Рестораны</li>
+            <li data-value="theater">Театры</li>
+            <li data-value="photo">Фотозона</li>
+            <li data-value="other">Другое</li>
+          </ul>
+        </div>
+        <input type="hidden" id="place-tag" name="place-tag" value="">
 
         <div class="file-upload">
           <label for="place-photo" id="upload-label">Добавить фото</label>
@@ -150,8 +146,8 @@
     </main>
 
     <button id="add-place-btn" class="add-place-btn">Добавить место</button>
-    
+
     <script src="https://api-maps.yandex.ru/2.1/?apikey=4213f0d0-4c3e-472c-bca6-8f1530505928&lang=ru_RU&load=package.full"></script>
-    <script src="script.js"></script>
+    <script type="module" src="scripts/app.js"></script>
   </body>
 </html>

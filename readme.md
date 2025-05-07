@@ -2,15 +2,15 @@ https://ushckff.github.io/MarketMap/
 
 -----------------------------------------
 
-version 1.0.1 (12.04.25)
+version 1.1.0 (7.05.25)
 
 Realized:
 - MVP
 - local storage
+- adaptive design
 
 Near updates: 
 - profile functionality
-- adaptive design
 - language switch
-- new site design
+- new design
 
