@@ -2,6 +2,7 @@ import { placemarks, setPlacemarks, map, isSidebarOpen, setIsSidebarOpen, setIsP
 import { getPresetByTag, clearForm, toggleSidebar } from './utils.js';
 import { showMarkerModal } from './modals.js';
 import { updateRatingDisplay } from './sidebar.js';
+import { currentRating } from './app.js';
 
 export function addPlaceWithData(coords) {
   const name = document.getElementById('place-name').value.trim();
@@ -12,7 +13,7 @@ export function addPlaceWithData(coords) {
   let photoData = 'images/place.png';
 
   const addMarker = () => {
-    addPlacemark(coords, name, description, tag, photoData, window.currentRating);
+    addPlacemark(coords, name, description, tag, photoData, currentRating);
     setIsPlacingMarker(false);
     document.getElementById('sidebar').classList.add('hidden');
     document.getElementById('sidebar').classList.remove('slide-down');

@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>MarkerMap by ushckff</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="src/assets/styles.css" />
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=4213f0d0-4c3e-472c-bca6-8f1530505928&lang=ru_RU&load=package.full"></script>
+    <script type="module" src="src/scripts/app.js"></script>
   </head>
   <body>
     <header class="top-bar">
@@ -12,7 +14,7 @@
       <nav class="nav-buttons">
         <div class="filter-container">
           <button id="filter-btn" class="header-btn fixed-btn">
-            <img id="filter-image" src="images/search.svg" alt="Поиск" />
+            <img id="filter-image" src="src/assets/images/search.svg" alt="Поиск" />
             <span id="filter-text">Поиск по тегу</span>
           </button>
 
@@ -35,10 +37,9 @@
           </div>
         </div>
 
-        <!-- Профиль -->
         <div class="profile-container">
           <button id="profile-btn" class="header-btn fixed-btn">
-            <img id="profile-logo" src="images/profile.png" alt="Профиль" />
+            <img id="profile-logo" src="src/assets/images/profile.png" alt="Профиль" />
             <span>Профиль</span>
           </button>
           <div id="profile-dropdown" class="dropdown hidden">
@@ -50,7 +51,6 @@
       </nav>
     </header>
 
-    <!-- Модальное окно профиля -->
     <div id="profile-modal" class="modal hidden">
       <div class="modal-content profile-content">
         <button id="close-profile-btn" class="close-modal-btn">×</button>
@@ -60,7 +60,6 @@
       </div>
     </div>
 
-    <!-- Модальное окно для просмотра метки -->
     <div id="info-modal" class="modal hidden">
       <div class="modal-content">
         <button id="close-modal-btn" class="close-modal-btn">×</button>
@@ -73,18 +72,17 @@
           <button id="edit-marker-btn" class="modal-btn modal-btn-edit">Изменить</button>
           <button id="delete-marker-btn" class="modal-btn modal-btn-delete">Удалить</button>
         </div>
+        <div id="map-instruction" class="map-instruction hidden">
+          Укажите место на карте
+        </div>
       </div>
-    </div>
-
-    <div id="map-instruction" class="map-instruction hidden">
-      Укажите место на карте
     </div>
 
     <main>
       <div id="map"></div>
 
       <div id="floating-flag" class="floating-flag hidden">
-        <img id="flag-icon" src="images/flag.png" alt="Flag" />
+        <img id="flag-icon" src="src/assets/images/flag.png" alt="Flag" />
       </div>
 
       <aside id="sidebar" class="sidebar hidden">
@@ -143,11 +141,9 @@
         </div>
         <div id="return-arrow" class="sidebar-return-arrow"></div>
       </aside>
+
+      <button id="add-place-btn" class="add-place-btn">Добавить место</button>
+
     </main>
-
-    <button id="add-place-btn" class="add-place-btn">Добавить место</button>
-
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=4213f0d0-4c3e-472c-bca6-8f1530505928&lang=ru_RU&load=package.full"></script>
-    <script type="module" src="scripts/app.js"></script>
   </body>
 </html>

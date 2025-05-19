@@ -27,6 +27,7 @@ export function clearForm() {
   setIsPlacingMarker(false);
   setFloatingFlagActive(false);
   hideFloatingFlag();
+  setCurrentRating(0);
 }
 
 export function showFloatingFlag() {
